@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tattoo_flutter/shared/lib/colors.dart';
 import 'package:tattoo_flutter/shared/ui/button/button.dart';
+import 'package:tattoo_flutter/shared/ui/divider/triangle_divider.dart';
 import 'package:tattoo_flutter/shared/ui/radio_button/radio_button.dart';
 import 'package:tattoo_flutter/shared/ui/switch_button/switch_button.dart';
 
@@ -26,7 +27,8 @@ void main() => runApp(MaterialApp(
                 },
               ),
               RadioButton(label: "Пися", onChanged: () => {}, isActive: false),
-              SwitchButton(isActive: false, onChanged: () {})
+              SwitchButton(isActive: false, onChanged: () {}),
+              const TriangleDivider()
             ],
           ),
         ),
