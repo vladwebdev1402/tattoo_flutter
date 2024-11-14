@@ -5,12 +5,18 @@ class Button extends StatelessWidget {
   final String text;
   final bool? isActive;
   final bool? fullWidth;
-  const Button({super.key, this.isActive, required this.text, this.fullWidth});
+  final void Function()? onTap;
+  const Button(
+      {super.key,
+      this.isActive,
+      required this.text,
+      required this.onTap,
+      this.fullWidth});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => {},
+      onTap: onTap,
       child: Container(
         width: fullWidth == true ? double.infinity : null,
         padding: const EdgeInsets.symmetric(vertical: 14.0, horizontal: 24.0),
