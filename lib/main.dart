@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tattoo_flutter/shared/lib/colors.dart';
 import 'package:tattoo_flutter/shared/ui/button/button.dart';
 import 'package:tattoo_flutter/shared/ui/radio_button/radio_button.dart';
+import 'package:tattoo_flutter/shared/ui/switch_button/switch_button.dart';
 
 int add(int a, int b) {
   return a + b;
@@ -24,7 +25,8 @@ void main() => runApp(MaterialApp(
                   print(123);
                 },
               ),
-              RadioButton(label: "Пися", onChanged: () => {}, isActive: false)
+              RadioButton(label: "Пися", onChanged: () => {}, isActive: false),
+              SwitchButton(isActive: false, onChanged: () {})
             ],
           ),
         ),
