@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:tattoo_flutter/shared/lib/colors.dart';
 import 'package:tattoo_flutter/shared/ui/button/button.dart';
 import 'package:tattoo_flutter/shared/ui/divider/triangle_divider.dart';
+import 'package:tattoo_flutter/shared/ui/price_field/price_field.dart';
 import 'package:tattoo_flutter/shared/ui/radio_button/radio_button.dart';
 import 'package:tattoo_flutter/shared/ui/switch_button/switch_button.dart';
-
-int add(int a, int b) {
-  return a + b;
-}
 
 void main() => runApp(MaterialApp(
       theme: ThemeData(fontFamily: "Jost"),
@@ -28,7 +25,11 @@ void main() => runApp(MaterialApp(
               ),
               RadioButton(label: "Пися", onChanged: () => {}, isActive: false),
               SwitchButton(isActive: false, onChanged: () {}),
-              const TriangleDivider()
+              const TriangleDivider(),
+              const SizedBox(
+                width: 83,
+                child: PriceField(),
+              )
             ],
           ),
         ),
