@@ -16,7 +16,7 @@ class ItemsList extends StatelessWidget {
         BlocProvider.of<ItemsListCubit>(context).getData();
       }
 
-      if (state is ItemsListLoadingState) {
+      if (state is ItemsListFirstLoadingState) {
         return const CircularProgressIndicator();
       }
       if (state is ItemsListErorState) {
