@@ -19,7 +19,7 @@ class Button extends StatelessWidget {
       onTap: onTap,
       child: Container(
         width: fullWidth == true ? double.infinity : null,
-        padding: const EdgeInsets.symmetric(vertical: 14.0, horizontal: 24.0),
+        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 24.0),
         decoration: BoxDecoration(
           color: isActive == true
               ? const Color(ProjectColors.darkOrange)
