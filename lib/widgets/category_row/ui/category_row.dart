@@ -5,7 +5,11 @@ import 'package:tattoo_flutter/widgets/category_row/cubit/category_row_cubit.dar
 import 'package:tattoo_flutter/widgets/category_row/cubit/category_row_state.dart';
 
 class CategoryRow extends StatelessWidget {
-  const CategoryRow({super.key});
+  final String activeCategory;
+  final Function(String category) onCategoryTap;
+
+  const CategoryRow(
+      {super.key, required this.activeCategory, required this.onCategoryTap});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +37,11 @@ class CategoryRow extends StatelessWidget {
                 padding: EdgeInsets.only(
                     left: index == 0 ? 16.0 : 0.0,
                     right: index == state.data.length - 1 ? 16.0 : 0.0),
-                child: Button(text: state.data[index].name!, onTap: () => {})),
+                child: Button(
+                  text: state.data[index].name!,
+                  onTap: () => onCategoryTap(state.data[index].sId!),
+                  isActive: activeCategory == state.data[index].sId,
+                )),
           ),
         );
       }
