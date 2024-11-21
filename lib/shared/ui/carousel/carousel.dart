@@ -22,7 +22,7 @@ class _CarouselState extends State<Carousel> {
     return Stack(
       children: [
         CarouselSlider(
-            items: widget.images.map((link) => Image.asset(link)).toList(),
+            items: widget.images.map((link) => Image.network(link)).toList(),
             carouselController: controller,
             options: CarouselOptions(
               height: 228.0,
@@ -35,9 +35,9 @@ class _CarouselState extends State<Carousel> {
         Visibility(
           visible: widget.withPagination,
           child: Align(
-            alignment: Alignment.bottomCenter, // Центр по горизонтали, снизу
+            alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 10.0), // Отступ снизу
+              padding: const EdgeInsets.only(bottom: 10.0),
               child: Pagination(
                 currentPage: currentPage,
                 countPage: widget.images.length,

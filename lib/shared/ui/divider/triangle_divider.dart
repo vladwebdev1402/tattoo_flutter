@@ -14,20 +14,17 @@ class TriangleDivider extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // Левый треугольник, направленный вправо
         CustomPaint(
           size: Size(triangleSize, triangleSize),
           painter: EquilateralTrianglePainter(
               color: const Color(ProjectColors.grayLight), pointingRight: true),
         ),
-        // Центральная линия
         Expanded(
           child: Container(
             height: 1.0,
             color: const Color(ProjectColors.grayLight),
           ),
         ),
-        // Правый треугольник, направленный влево
         CustomPaint(
           size: Size(triangleSize, triangleSize),
           painter: EquilateralTrianglePainter(
@@ -54,13 +51,10 @@ class EquilateralTrianglePainter extends CustomPainter {
 
     Path path = Path();
     if (pointingRight) {
-      // Равносторонний треугольник, направленный вправо
-
       path.moveTo(size.width, size.height / 2);
       path.lineTo(0, 0);
       path.lineTo(0, size.height);
     } else {
-      // Равносторонний треугольник, направленный влево
       path.moveTo(0, size.height / 2);
       path.lineTo(size.width, 0);
       path.lineTo(size.width, size.height);
