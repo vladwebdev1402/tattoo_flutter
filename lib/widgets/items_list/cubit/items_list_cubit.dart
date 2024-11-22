@@ -12,7 +12,7 @@ class ItemsListCubit extends Cubit<ItemsListState> {
 
   Future<void> getData() async {
     try {
-      emit(ItemsListFirstLoadingState());
+      if (currentPage == 1) emit(ItemsListLoadingState());
       final shopItems = await getItemsList(currentPage);
       data = shopItems.data!;
       count = shopItems.count!;

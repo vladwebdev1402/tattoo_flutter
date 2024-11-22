@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tattoo_flutter/screens/main_screen/cubit/main_screen_cubit.dart';
-import 'package:tattoo_flutter/screens/main_screen/cubit/main_screen_state.dart';
+import 'package:tattoo_flutter/shared/lib/colors.dart';
 import 'package:tattoo_flutter/widgets/category_row/ui/category_row_provider.dart';
 import 'package:tattoo_flutter/widgets/items_list/ui/items_list_provider.dart';
 
@@ -10,29 +8,26 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(Object context) {
-    return BlocBuilder<MainScreenCubit, MainScreenState>(
-        builder: (context, state) {
-      if (state is MainScreenUpdateState) {
-        return SingleChildScrollView(
-            child: Container(
-          margin: const EdgeInsets.only(top: 16.0),
-          child: Column(children: [
-            CategoryRowProvider(
-              activeCategory: state.category,
-              onCategoryTap:
-                  BlocProvider.of<MainScreenCubit>(context).changeCategory,
-            ),
-            const SizedBox(
-              height: 24.0,
-            ),
-            const SizedBox(
-              width: 280.0,
-              child: ItemsListProvider(),
-            )
-          ]),
-        ));
-      }
-      return const Text('');
-    });
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(ProjectColors.dark),
+        title: const Text("Flutter Demo"),
+      ),
+      backgroundColor: const Color(ProjectColors.light),
+      body: SingleChildScrollView(
+          child: Container(
+        margin: const EdgeInsets.only(top: 16.0),
+        child: const Column(children: [
+          CategoryRowProvider(),
+          SizedBox(
+            height: 24.0,
+          ),
+          SizedBox(
+            width: 280.0,
+            child: ItemsListProvider(),
+          )
+        ]),
+      )),
+    );
   }
 }

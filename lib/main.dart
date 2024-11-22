@@ -1,14 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tattoo_flutter/screens/main_screen/main_screen_provider.dart';
-import 'package:tattoo_flutter/shared/lib/colors.dart';
+import 'package:tattoo_flutter/screens/main_screen/main_screen.dart';
 
 void main() => runApp(MaterialApp(
-    theme: ThemeData(fontFamily: "Jost"),
-    home: Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(ProjectColors.dark),
-        title: const Text("Flutter Demo"),
-      ),
-      backgroundColor: const Color(ProjectColors.light),
-      body: const MainScreenProvider(),
-    )));
+    theme: ThemeData(fontFamily: "Jost"), home: const MainScreen()));
