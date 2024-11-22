@@ -5,7 +5,9 @@ class ProjectColors {
   static const int grayLight = 0xFFD0D0D0;
   static const int grayBg = 0xFFE3E3E3;
   static const int gray2 = 0xFF636B78;
-  static const int dark = 0xFF050402;
+  static const int grayDark = 0xFF636B78;
+  static const int dark = 0xFF3E424B;
   static const int light = 0xFFF5F5F5;
   static const int white = 0xFFFFFFFF;
+  static const int black = 0xFF050402;
 }
