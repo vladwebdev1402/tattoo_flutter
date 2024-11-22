@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tattoo_flutter/shared/lib/colors.dart';
+import 'package:tattoo_flutter/shared/lib/formate_number.dart';
 
 class ShopItemPrice extends StatelessWidget {
   final int oldPrice;
@@ -17,7 +18,7 @@ class ShopItemPrice extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text('$price ₽',
+        Text('${formateNumber(price)} ₽',
             style: TextStyle(
                 color: const Color(ProjectColors.orange),
                 fontSize: isBig ? 24.0 : 17.0,
@@ -28,7 +29,7 @@ class ShopItemPrice extends StatelessWidget {
         Visibility(
             visible: oldPrice != 0,
             child: Text(
-              '$oldPrice ₽',
+              '${formateNumber(oldPrice)} ₽',
               style: TextStyle(
                   decoration: TextDecoration.lineThrough,
                   color: const Color(ProjectColors.gray2),
