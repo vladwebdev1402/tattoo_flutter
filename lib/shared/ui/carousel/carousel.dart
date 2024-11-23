@@ -5,9 +5,13 @@ import 'package:tattoo_flutter/shared/ui/carousel/pagination.dart';
 class Carousel extends StatefulWidget {
   final List<String> images;
   final bool withPagination;
+  final double height;
 
   const Carousel(
-      {super.key, required this.images, this.withPagination = false});
+      {super.key,
+      required this.images,
+      this.withPagination = false,
+      required this.height});
 
   @override
   State<Carousel> createState() => _CarouselState();
@@ -22,10 +26,16 @@ class _CarouselState extends State<Carousel> {
     return Stack(
       children: [
         CarouselSlider(
-            items: widget.images.map((link) => Image.network(link)).toList(),
+            items: widget.images
+                .map((link) => Image.network(
+                      link,
+                      fit: BoxFit.cover,
+                    ))
+                .toList(),
             carouselController: controller,
             options: CarouselOptions(
-              height: 228.0,
+              aspectRatio: 1.5,
+              height: widget.height,
               viewportFraction: 1.0,
               enableInfiniteScroll: false,
               onPageChanged: (index, reason) => setState(() {

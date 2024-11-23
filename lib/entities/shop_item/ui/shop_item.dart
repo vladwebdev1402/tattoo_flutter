@@ -38,7 +38,10 @@ class ShopItem extends StatelessWidget {
         ),
         Padding(
             padding: const EdgeInsets.only(left: 30.0),
-            child: ShopItemPrice(price: item.price!, oldPrice: item.oldPrice!)),
+            child: ShopItemPrice(
+              price: item.price!,
+              oldPrice: item.oldPrice!,
+            )),
         const SizedBox(
           height: 16.0,
         ),

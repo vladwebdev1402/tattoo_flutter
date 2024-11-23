@@ -20,6 +20,7 @@ class ShopItemCarousel extends StatelessWidget {
       Carousel(
         images: images,
         withPagination: isBig,
+        height: isBig ? 320.0 : 228.0,
       ),
       Positioned(
           top: 10.0,
