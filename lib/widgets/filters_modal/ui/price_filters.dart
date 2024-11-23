@@ -21,80 +21,72 @@ class _PriceFiltersState extends State<PriceFilters> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => FiltersCubit(),
-        child:
-            BlocBuilder<FiltersCubit, FiltersState>(builder: (context, state) {
-          if (state is FiltersUpdateState) {
-            return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    return BlocBuilder<FiltersCubit, FiltersState>(builder: (context, state) {
+      if (state is FiltersUpdateState) {
+        return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const FilterTitle(text: "Цена"),
+              const SizedBox(
+                height: 30.0,
+              ),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const FilterTitle(text: "Цена"),
+                  SizedBox(
+                      width: 83.0,
+                      child: PriceField(
+                        onChanged: (value) => {
+                          debouncer.debounce(
+                              duration: const Duration(milliseconds: 500),
+                              onDebounce: () => {
+                                    BlocProvider.of<FiltersCubit>(context)
+                                        .changeStartPrice(value == ''
+                                            ? 0
+                                            : int.parse(value.substring(
+                                                0, min(value.length, 10))))
+                                  })
+                        },
+                        initialValue: state.filters.startPrice != 0
+                            ? state.filters.startPrice.toString()
+                            : '',
+                      )),
                   const SizedBox(
-                    height: 30.0,
+                    width: 3.0,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                          width: 83.0,
-                          child: PriceField(
-                            onChanged: (value) => {
-                              debouncer.debounce(
-                                  duration: const Duration(milliseconds: 500),
-                                  onDebounce: () => {
-                                        BlocProvider.of<FiltersCubit>(context)
-                                            .changeStartPrice(value == ''
-                                                ? 0
-                                                : int.parse(value.substring(
-                                                    0, min(value.length, 10))))
-                                      })
-                            },
-                            initialValue: state.filters.startPrice != 0
-                                ? state.filters.startPrice.toString()
-                                : '',
-                          )),
-                      const SizedBox(
-                        width: 3.0,
-                      ),
-                      Container(
-                        height: 1.0,
-                        width: 14.0,
-                        color: const Color(ProjectColors.darkOrange),
-                      ),
-                      const SizedBox(
-                        width: 3.0,
-                      ),
-                      SizedBox(
-                          width: 83.0,
-                          child: PriceField(
-                              onChanged: (value) => {
-                                    debouncer.debounce(
-                                        duration:
-                                            const Duration(milliseconds: 500),
-                                        onDebounce: () => {
-                                              BlocProvider.of<FiltersCubit>(
-                                                      context)
-                                                  .changeEndPrice(value == ''
-                                                      ? 0
-                                                      : int.parse(
-                                                          value.substring(
-                                                              0,
-                                                              min(value.length,
-                                                                  10))))
-                                            })
-                                  },
-                              initialValue: state.filters.endPrice != 0
-                                  ? state.filters.endPrice.toString()
-                                  : '')),
-                    ],
-                  )
-                ]);
-          }
+                  Container(
+                    height: 1.0,
+                    width: 14.0,
+                    color: const Color(ProjectColors.darkOrange),
+                  ),
+                  const SizedBox(
+                    width: 3.0,
+                  ),
+                  SizedBox(
+                      width: 83.0,
+                      child: PriceField(
+                          onChanged: (value) => {
+                                debouncer.debounce(
+                                    duration: const Duration(milliseconds: 500),
+                                    onDebounce: () => {
+                                          BlocProvider.of<FiltersCubit>(context)
+                                              .changeEndPrice(value == ''
+                                                  ? 0
+                                                  : int.parse(value.substring(0,
+                                                      min(value.length, 10))))
+                                        })
+                              },
+                          initialValue: state.filters.endPrice != 0
+                              ? state.filters.endPrice.toString()
+                              : '')),
+                ],
+              )
+            ]);
+      }
 
-          return Container();
-        }));
+      return Container();
+    });
   }
 }

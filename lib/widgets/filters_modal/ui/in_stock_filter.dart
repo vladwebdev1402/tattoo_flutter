@@ -10,24 +10,21 @@ class InStockFilter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => FiltersCubit(),
-        child:
-            BlocBuilder<FiltersCubit, FiltersState>(builder: (context, state) {
-          if (state is FiltersUpdateState) {
-            return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const FilterTitle(text: "Только в наличии"),
-                  SwitchButton(
-                      isActive: state.filters.no,
-                      onChanged: (value) {
-                        BlocProvider.of<FiltersCubit>(context).changeNo(value);
-                      })
-                ]);
-          }
+    return BlocBuilder<FiltersCubit, FiltersState>(builder: (context, state) {
+      if (state is FiltersUpdateState) {
+        return Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const FilterTitle(text: "Только в наличии"),
+              SwitchButton(
+                  isActive: state.filters.no,
+                  onChanged: (value) {
+                    BlocProvider.of<FiltersCubit>(context).changeNo(value);
+                  })
+            ]);
+      }
 
-          return Container();
-        }));
+      return Container();
+    });
   }
 }
