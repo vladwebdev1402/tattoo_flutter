@@ -23,6 +23,12 @@ class ShopItemCarousel extends StatelessWidget {
         height: isBig ? 320.0 : 228.0,
       ),
       Positioned(
+          top: isBig ? 18.0 : 35.0,
+          right: isBig ? 17.0 : 34.0,
+          width: isBig ? 34.0 : 16.0,
+          height: isBig ? 30.0 : 18.0,
+          child: SvgPicture.asset('assets/images/favorite.svg')),
+      Positioned(
           top: 10.0,
           left: 10.0,
           child: Column(
