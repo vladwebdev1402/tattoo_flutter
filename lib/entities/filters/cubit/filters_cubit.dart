@@ -13,11 +13,13 @@ class FiltersCubit extends Cubit<FiltersState> {
 
   void changeCategory(String category) {
     filters.category = category;
+    filters.page = 1;
+
     emit(FiltersUpdateState(filters: filters));
   }
 
   void changeSortField(String sortField, String sortOrder) {
-    filters.hot = false;
+    filters.page = 1;
     if (sortField == filters.sortField && sortOrder == filters.sortOrder) {
       filters.sortField = '';
       filters.sortOrder = '';
@@ -31,23 +33,24 @@ class FiltersCubit extends Cubit<FiltersState> {
 
   void changeStartPrice(int startPrice) {
     filters.startPrice = startPrice;
+    filters.page = 1;
     emit(FiltersUpdateState(filters: filters));
   }
 
   void changeEndPrice(int endPrice) {
     filters.endPrice = endPrice;
+    filters.page = 1;
     emit(FiltersUpdateState(filters: filters));
   }
 
   void changeNo(bool no) {
     filters.no = no;
+    filters.page = 1;
     emit(FiltersUpdateState(filters: filters));
   }
 
-  void changeHot(bool hot) {
-    filters.hot = hot;
-    filters.sortField = '';
-    filters.sortOrder = '';
+  void changePage() {
+    filters.page++;
     emit(FiltersUpdateState(filters: filters));
   }
 }

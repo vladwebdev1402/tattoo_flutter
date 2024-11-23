@@ -30,8 +30,10 @@ class SortFilters extends StatelessWidget {
                             label: "Популярные",
                             onChanged: (value) =>
                                 BlocProvider.of<FiltersCubit>(context)
-                                    .changeHot(value),
-                            isActive: state.filters.hot),
+                                    .changeSortField('marcers.hot', 'desc'),
+                            isActive:
+                                state.filters.sortField == 'marcers.hot' &&
+                                    state.filters.sortOrder == 'desc'),
                         const SizedBox(
                           height: 10.0,
                         ),
@@ -48,9 +50,9 @@ class SortFilters extends StatelessWidget {
                             label: "Дешевые",
                             onChanged: (value) =>
                                 BlocProvider.of<FiltersCubit>(context)
-                                    .changeSortField('price', 'desc'),
+                                    .changeSortField('price', 'asc'),
                             isActive: state.filters.sortField == 'price' &&
-                                state.filters.sortOrder == 'desc'),
+                                state.filters.sortOrder == 'asc'),
                         const SizedBox(
                           height: 10.0,
                         ),
@@ -58,9 +60,9 @@ class SortFilters extends StatelessWidget {
                             label: "Дорогие",
                             onChanged: (value) =>
                                 BlocProvider.of<FiltersCubit>(context)
-                                    .changeSortField('price', 'asc'),
+                                    .changeSortField('price', 'desc'),
                             isActive: state.filters.sortField == 'price' &&
-                                state.filters.sortOrder == 'asc'),
+                                state.filters.sortOrder == 'desc'),
                       ])),
             ]);
       }
