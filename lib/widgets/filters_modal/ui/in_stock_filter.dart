@@ -19,7 +19,11 @@ class InStockFilter extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const FilterTitle(text: "Только в наличии"),
-                  SwitchButton(isActive: false, onChanged: () {})
+                  SwitchButton(
+                      isActive: state.filters.no,
+                      onChanged: (value) {
+                        BlocProvider.of<FiltersCubit>(context).changeNo(value);
+                      })
                 ]);
           }
 

@@ -4,7 +4,7 @@ class Filters {
   String sortOrder;
 
   bool no;
-  bool news;
+  bool hot;
 
   int startPrice;
   int endPrice;
@@ -12,7 +12,7 @@ class Filters {
   Filters({
     this.category = 'all',
     this.no = false,
-    this.news = false,
+    this.hot = false,
     this.sortField = "",
     this.sortOrder = "",
     this.startPrice = 0,
@@ -27,7 +27,7 @@ class Filters {
     if (sortField.isNotEmpty) map['sortField'] = sortField;
 
     if (no) map['no'] = no;
-    if (news) map['news'] = news;
+    if (hot) map['news'] = hot;
 
     if (startPrice != 0) map['startPrice'] = startPrice;
     if (endPrice != 0) map['endPrice'] = endPrice;

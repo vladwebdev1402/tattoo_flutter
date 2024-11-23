@@ -3,7 +3,7 @@ import 'package:tattoo_flutter/shared/lib/colors.dart';
 
 class SwitchButton extends StatelessWidget {
   final bool isActive;
-  final void Function()? onChanged;
+  final void Function(bool) onChanged;
 
   const SwitchButton(
       {super.key, required this.isActive, required this.onChanged});
@@ -11,7 +11,7 @@ class SwitchButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onChanged,
+      onTap: () => onChanged(!isActive),
       child: Stack(
         children: [
           Container(

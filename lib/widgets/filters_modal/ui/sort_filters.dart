@@ -31,29 +31,39 @@ class SortFilters extends StatelessWidget {
                           children: [
                             RadioButton(
                                 label: "Популярные",
-                                onChanged: () {},
-                                isActive: false),
+                                onChanged: (value) =>
+                                    BlocProvider.of<FiltersCubit>(context)
+                                        .changeHot(value),
+                                isActive: state.filters.hot),
                             const SizedBox(
                               height: 10.0,
                             ),
                             RadioButton(
                                 label: "По алфавиту",
-                                onChanged: () {},
-                                isActive: false),
+                                onChanged: (value) =>
+                                    BlocProvider.of<FiltersCubit>(context)
+                                        .changeSortField('name', 'asc'),
+                                isActive: state.filters.sortField == 'name'),
                             const SizedBox(
                               height: 10.0,
                             ),
                             RadioButton(
                                 label: "Дешевые",
-                                onChanged: () {},
-                                isActive: false),
+                                onChanged: (value) =>
+                                    BlocProvider.of<FiltersCubit>(context)
+                                        .changeSortField('price', 'desc'),
+                                isActive: state.filters.sortField == 'price' &&
+                                    state.filters.sortOrder == 'desc'),
                             const SizedBox(
                               height: 10.0,
                             ),
                             RadioButton(
                                 label: "Дорогие",
-                                onChanged: () {},
-                                isActive: false),
+                                onChanged: (value) =>
+                                    BlocProvider.of<FiltersCubit>(context)
+                                        .changeSortField('price', 'asc'),
+                                isActive: state.filters.sortField == 'price' &&
+                                    state.filters.sortOrder == 'asc'),
                           ])),
                 ]);
           }

@@ -5,10 +5,17 @@ import 'package:tattoo_flutter/shared/lib/colors.dart';
 class PriceField extends StatelessWidget {
   final TextEditingController? controller;
   final FocusNode? focusNode;
+  final String? initialValue;
   final Function(String)? onSubmitted;
+  final Function(String)? onChanged;
 
   const PriceField(
-      {this.controller, this.focusNode, this.onSubmitted, super.key});
+      {this.controller,
+      this.focusNode,
+      this.initialValue,
+      this.onSubmitted,
+      this.onChanged,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,8 +34,10 @@ class PriceField extends StatelessWidget {
       ),
       cursorColor: const Color(ProjectColors.dark),
       keyboardType: TextInputType.number,
+      initialValue: initialValue,
       controller: controller,
       focusNode: focusNode,
+      onChanged: onChanged,
       onFieldSubmitted: onSubmitted,
       style: const TextStyle(
           fontSize: 15.0,

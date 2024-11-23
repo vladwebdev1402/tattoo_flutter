@@ -5,7 +5,7 @@ import 'package:tattoo_flutter/shared/lib/colors.dart';
 
 class RadioButton extends StatelessWidget {
   final String label;
-  final void Function()? onChanged;
+  final void Function(bool) onChanged;
   final bool isActive;
 
   const RadioButton(
@@ -17,7 +17,7 @@ class RadioButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onChanged,
+      onTap: () => onChanged(!isActive),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,

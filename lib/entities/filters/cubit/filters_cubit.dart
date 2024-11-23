@@ -17,19 +17,37 @@ class FiltersCubit extends Cubit<FiltersState> {
   }
 
   void changeSortField(String sortField, String sortOrder) {
-    filters.sortField = sortField;
-    filters.sortOrder = sortOrder;
+    filters.hot = false;
+    if (sortField == filters.sortField && sortOrder == filters.sortOrder) {
+      filters.sortField = '';
+      filters.sortOrder = '';
+    } else {
+      filters.sortField = sortField;
+      filters.sortOrder = sortOrder;
+    }
+
     emit(FiltersUpdateState(filters: filters));
   }
 
-  void changePrice(int startPrice, int endPrice) {
+  void changeStartPrice(int startPrice) {
     filters.startPrice = startPrice;
+    emit(FiltersUpdateState(filters: filters));
+  }
+
+  void changeEndPrice(int endPrice) {
     filters.endPrice = endPrice;
     emit(FiltersUpdateState(filters: filters));
   }
 
   void changeNo(bool no) {
     filters.no = no;
+    emit(FiltersUpdateState(filters: filters));
+  }
+
+  void changeHot(bool hot) {
+    filters.hot = hot;
+    filters.sortField = '';
+    filters.sortOrder = '';
     emit(FiltersUpdateState(filters: filters));
   }
 }
