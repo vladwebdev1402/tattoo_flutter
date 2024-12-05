@@ -102,6 +102,7 @@ class ShopItemScreen extends StatelessWidget {
                   ),
                   ListView.separated(
                       shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) => Text(
                             separatedDescription[index],
                             style: const TextStyle(
